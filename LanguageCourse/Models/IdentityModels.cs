@@ -18,16 +18,16 @@ namespace LanguageCourse.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class LanguageCourseDBContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public LanguageCourseDBContext()
+            : base("LanguageCourseDBContext", throwIfV1Schema: false)
         {
         }
         
-        public static ApplicationDbContext Create()
+        public static LanguageCourseDBContext Create()
         {
-            return new ApplicationDbContext();
+            return new LanguageCourseDBContext();
         }
     }
 }

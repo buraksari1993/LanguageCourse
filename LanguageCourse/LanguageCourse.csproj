@@ -235,10 +235,19 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Domain\Certificate.cs" />
+    <Compile Include="Models\Domain\CertificateLink.cs" />
+    <Compile Include="Models\Domain\Contact.cs" />
+    <Compile Include="Models\Domain\Course.cs" />
+    <Compile Include="Models\Domain\CourseLink.cs" />
+    <Compile Include="Models\Domain\Education.cs" />
+    <Compile Include="Models\Domain\Lesson.cs" />
+    <Compile Include="Models\Domain\Pay.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\Const\Enum.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
