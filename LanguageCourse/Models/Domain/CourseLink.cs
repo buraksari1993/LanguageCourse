@@ -13,14 +13,8 @@ namespace LanguageCourse.Models
         //Course
         public Guid CourseId { get; set; }
         public virtual Course Course { get; set; }
-        public virtual ICollection<Course> Courses { get; set; }
 
         //User
         //eklenecek
-
-        public CourseLink()
-        {
-            Courses = new List<Course>();
-        }
     }
 }

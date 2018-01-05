@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace LanguageCourse.Models
 {
     public class Lesson
     {
         public Guid Id { get; set; }
+        [Required]
         public string Name { get; set; }
+
 
         //FK
         //Course

@@ -14,5 +14,13 @@ namespace LanguageCourse.Models
         //Course
         public Guid CourseId { get; set; }
         public virtual Course Course { get; set; }
+
+        //Certificate
+        public virtual ICollection<Certificate> Certificates { get; set; }
+
+        public Certificate()
+        {
+            Certificates = new List<Certificate>();
+        }
     }
 }
