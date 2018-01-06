@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace LanguageCourse.Models
 {
@@ -18,20 +16,21 @@ namespace LanguageCourse.Models
         public Guid LessonId { get; set; }
         public virtual Lesson Lesson { get; set; }
 
-        //Course
-        public virtual ICollection<Course> Courses { get; set; }
-
         //Certificate
         public virtual ICollection<Certificate> Certificates { get; set; }
 
         //Pay
         public virtual ICollection<Pay> Pays { get; set; }
 
+        //CourseLink
+        public virtual ICollection<CourseLink> CourseLinks { get; set; }
+
         public Course()
         {
-            Courses = new List<Course>();
             Certificates = new List<Certificate>();
             Pays = new List<Pay>();
+            CourseLinks = new List<CourseLink>();
         }
+
     }
 }

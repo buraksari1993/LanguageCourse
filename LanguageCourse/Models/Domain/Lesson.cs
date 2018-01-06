@@ -10,7 +10,6 @@ namespace LanguageCourse.Models
         [Required]
         public string Name { get; set; }
 
-
         //FK
         //Course
         public virtual ICollection<Course> Courses { get; set; }

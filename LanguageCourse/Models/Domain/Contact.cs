@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace LanguageCourse.Models
 {
@@ -13,6 +11,10 @@ namespace LanguageCourse.Models
 
         //FK
         //User
-        //Icollection eklenecek
+        public virtual ICollection<User> Users { get; set; }
+        public Contact()
+        {
+            Users = new List<User>();
+        }
     }
 }

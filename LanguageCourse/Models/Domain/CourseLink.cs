@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace LanguageCourse.Models
 {
@@ -15,6 +12,7 @@ namespace LanguageCourse.Models
         public virtual Course Course { get; set; }
 
         //User
-        //eklenecek
+        public string UserId { get; set; }
+        public virtual User User { get; set; }
     }
 }

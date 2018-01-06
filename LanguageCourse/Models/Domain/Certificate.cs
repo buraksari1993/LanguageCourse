@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace LanguageCourse.Models
 {
@@ -15,12 +13,13 @@ namespace LanguageCourse.Models
         public Guid CourseId { get; set; }
         public virtual Course Course { get; set; }
 
-        //Certificate
-        public virtual ICollection<Certificate> Certificates { get; set; }
+        //CertificateLink
+        public virtual ICollection<CertificateLink> CertificateLinks { get; set; }
 
         public Certificate()
         {
-            Certificates = new List<Certificate>();
+            CertificateLinks = new List<CertificateLink>();
         }
+
     }
 }

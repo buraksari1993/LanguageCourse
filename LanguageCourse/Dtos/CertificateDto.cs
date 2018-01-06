@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace LanguageCourse.Dtos
 {
     public class CertificateAddDto
     {
         public string Name { get; set; }
+        public Guid CourseId { get; set; }
     }
     public class CertificateUpdateDto
     {
@@ -20,5 +18,6 @@ namespace LanguageCourse.Dtos
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Guid CourseId { get; set; }
+        public string CourseName { get; set; }
     }
 }
