@@ -16,18 +16,23 @@ using Microsoft.Owin.Security.OAuth;
 using LanguageCourse.Models;
 using LanguageCourse.Providers;
 using LanguageCourse.Results;
+using LanguageCourse.Services;
+using LanguageCourse.Dtos;
+using System.Web.Http.Description;
 
 namespace LanguageCourse.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IUserService _userService = null;
 
         public AccountController()
         {
+            _userService = new UserService();
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -321,14 +326,23 @@ namespace LanguageCourse.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(UserAddDto model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Name, Email = model.Email };
+
+            #region ExternalUserTable
+
+            bool customUserResult = await _userService.Register(model);
+
+            if (!customUserResult)
+                return BadRequest();
+
+            #endregion
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -373,6 +387,33 @@ namespace LanguageCourse.Controllers
             return Ok();
         }
 
+        // PUT api/Account/Update
+        [Route("Update"), HttpPut]
+        public async Task<IHttpActionResult> Update(UserUpdateDto model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _userService.Update(model);
+
+            if (!result)
+                return BadRequest();
+
+            return Ok();
+        }
+
+        // GET api/Account/Get
+        [Route("Get"), HttpGet]
+        [ResponseType(typeof(IEnumerable<UserGetDto>))]
+        public async Task<IHttpActionResult> Get()
+        {
+            var result = await _userService.Get();
+
+            if (result == null || result.Count <= 0)
+                result = new List<UserGetDto>();
+
+            return Ok(result);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

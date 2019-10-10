@@ -228,17 +228,52 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CertificateController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
+    <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Dtos\CertificateDto.cs" />
+    <Compile Include="Dtos\ContactDto.cs" />
+    <Compile Include="Dtos\CourseDto.cs" />
+    <Compile Include="Dtos\EducationDto.cs" />
+    <Compile Include="Dtos\LessonDto.cs" />
+    <Compile Include="Dtos\PayDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801051633066_Initial-Database.cs" />
+    <Compile Include="Migrations\201801051633066_Initial-Database.Designer.cs">
+      <DependentUpon>201801051633066_Initial-Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Domain\Certificate.cs" />
+    <Compile Include="Models\Domain\CertificateLink.cs" />
+    <Compile Include="Models\Domain\Contact.cs" />
+    <Compile Include="Models\Domain\Course.cs" />
+    <Compile Include="Models\Domain\CourseLink.cs" />
+    <Compile Include="Models\Domain\Education.cs" />
+    <Compile Include="Models\Domain\Lesson.cs" />
+    <Compile Include="Models\Domain\Pay.cs" />
+    <Compile Include="Models\Domain\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\CertificateService.cs" />
+    <Compile Include="Services\Const\Enum.cs" />
+    <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\EducationService.cs" />
+    <Compile Include="Services\LessonService.cs" />
+    <Compile Include="Services\PayService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +348,11 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801051633066_Initial-Database.resx">
+      <DependentUpon>201801051633066_Initial-Database.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

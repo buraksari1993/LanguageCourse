@@ -1,13 +1,14 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace LanguageCourse.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+
+    public class ApplicationUser : User
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
@@ -18,16 +19,22 @@ namespace LanguageCourse.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class LanguageCourseDBContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public LanguageCourseDBContext()
+            : base("LanguageCourseDBContext", throwIfV1Schema: false)
         {
         }
-        
-        public static ApplicationDbContext Create()
+        public static LanguageCourseDBContext Create()
         {
-            return new ApplicationDbContext();
+            return new LanguageCourseDBContext();
         }
+        public DbSet<Lesson> Lesson { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Certificate> Certificate { get; set; }
+        public DbSet<Pay> Pay { get; set; }
+        public DbSet<Education> Education { get; set; }
+        public DbSet<Contact> Contact { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
